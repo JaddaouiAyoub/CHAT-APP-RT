@@ -1,0 +1,11 @@
+express : to initialise an express server 
+dotenv : to be able to read environment variables
+cookie-parser : to parse the cookies 
+bcryptjs : to be able to hash passwords 
+mongoose : to be able to connect mongodb database and interact with it 
+ socket.io :  to be able to real time communication
+ jsonwebtoken : to be able to create those tokens and install them ander the root 
+  
+ le package nodemon --save-dev : permet de ne pas a chaque fois 
+     relancer le serveur 
+le package dotenv permet d'cceder aux variable d'environnement existant dans le fichier .env

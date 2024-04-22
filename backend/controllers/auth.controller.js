@@ -11,6 +11,7 @@ export const signup = async (req,res)=>{
     if(user){
         return res.status(400).json({error:"Username already exists"})
     }
+    
 // HACH PASSWORD HERE
 
 const salt = await bcrypt.genSalt(10);

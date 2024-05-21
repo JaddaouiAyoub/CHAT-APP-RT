@@ -50,9 +50,9 @@ const Message = ({ message }) => {
                 </div>
 
                 {!fromMe && (
-                <div className="relative">
+                <div className="relative ml-1">
                     <img
-                        className="translate-icon w-6 h-6 mr-2 cursor-pointer"
+                        className="translate-icon w-6 h-6 mr-2 cursor-pointer opacity-50 hover:opacity-100 transition-opacity duration-300"
                         src="traductionIcon.jpg"
                         alt="Translate Icon"
                         onClick={() => setShowLanguageMenu(!showLanguageMenu)} // Affiche/masque le menu de langue lorsqu'on clique sur l'icône

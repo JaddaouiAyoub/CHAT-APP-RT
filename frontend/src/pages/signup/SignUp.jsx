@@ -33,7 +33,7 @@ const handleSubmit =async (e)=> {
 
          <form onSubmit={handleSubmit}>
             <label className="label p-2">
-                <span className="text-base label-text">Full name</span> 
+                <span className="text-base label-text text-gray-100">Full name</span> 
             </label> 
             <input type="text" placeholder="EX: Ayoub Jad" className="w-full input input-bordered h-10" 
                 value={inputs.fullName}
@@ -41,9 +41,9 @@ const handleSubmit =async (e)=> {
             />
             <div>
                 <label className="label p-2">
-                    <span className="text-base label-text">Username</span> 
+                    <span className="text-base label-text text-gray-100">Username</span> 
                 </label> 
-                <input type="text" placeholder="Ayoubjad" className="w-full input input-bordered h-10" 
+                <input type="text" placeholder="Ayoubjad" className="w-full input input-bordered h-10 " 
                     value={inputs.username}
                     onChange={(e)=>setInputs({...inputs,username:e.target.value})}
 
@@ -51,7 +51,7 @@ const handleSubmit =async (e)=> {
             </div>
             <div>
                 <label className="label p-2">
-                    <span className="text-base label-text">Password</span> 
+                    <span className="text-base label-text text-gray-100">Password</span> 
                 </label> 
                 <input type="password" placeholder="Enter Password" className="w-full input input-bordered h-10" 
                     value={inputs.password}
@@ -61,9 +61,9 @@ const handleSubmit =async (e)=> {
             </div>
             <div>
                 <label className="label p-2">
-                    <span className="text-base label-text">Confirm Password</span> 
+                    <span className="text-base label-text text-gray-100">Confirm Password</span> 
                 </label> 
-                <input type="password" placeholder="Confirm Password" className="w-full input input-bordered h-10"
+                <input type="password" placeholder="Confirm Password " className="w-full input input-bordered h-10 "
                     value={inputs.confirmPassword}
                     onChange={(e)=>setInputs({...inputs,confirmPassword:e.target.value})}
 
@@ -72,11 +72,11 @@ const handleSubmit =async (e)=> {
             
             {/* Gender chekbox to be done here */}
             <GenderChekBox onCheckboxChange={handleCheckboxChange } selectedGender={inputs.gender} />
-            <Link to={"/login"} className="text-sm hover:inderline hover:text-blue-600 mt-1 inline-block" >
+            <Link to={"/login"} className="text-sm hover:inderline hover:text-blue-600 mt-1 inline-block text-gray-100" >
                 Already have an account?
             </Link>
             <div>
-                    <button className="btn btn-block btn-sm mt-2" 
+                    <button className="btn btn-block btn-sm mt-2 text-gray-100" 
                     disabled={loading}
                     >
                         {loading ? <span className='loading loading-spinner'></span> : "Sign Up"}

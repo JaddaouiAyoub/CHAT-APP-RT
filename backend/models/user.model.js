@@ -23,8 +23,12 @@ const userSchema = new mongoose.Schema({
     profilePic:{
         type:String,
         default:"",
-    }
-    
+    },
+    // Ajout du champ friends
+    friends: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }]
 },
 {timestamps:true}
 );

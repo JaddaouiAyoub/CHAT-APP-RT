@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react"
 import toast from "react-hot-toast";
 
-const useGetConversations = () => {
+const useGetUsers = () => {
    const [loading,setLoading]=useState(false);
    const [conversations,setConversations]=useState([])
 
    useEffect(()=>{
-    const getConversations = async () => {
+    const getUsers = async () => {
         setLoading(true);
         try {
-            const res = await fetch("/api/users/friends");
+            const res = await fetch("/api/users");
             const data = await res.json();
             
             if(data.error){
@@ -23,9 +23,9 @@ const useGetConversations = () => {
         }
     }
 
-    getConversations();
+    getUsers();
    },[]);
    return { loading , conversations}
 }
 
-export default useGetConversations
+export default useGetUsers

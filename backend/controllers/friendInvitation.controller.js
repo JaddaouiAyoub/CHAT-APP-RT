@@ -31,7 +31,7 @@ export const sendFriendInvitation = async (req, res) => {
 
         // Envoyer l'invitation en temps réel via Socket.io
         io.to(receiverId.toString()).emit('friendInvitation', invitation);
-        console.log("Invitation sent successfully");
+        //console.log("Invitation sent successfully");
         res.status(200).json({ message: "Invitation sent successfully" });
     } catch (error) {
         console.error("Error in sendFriendInvitation", error.message);

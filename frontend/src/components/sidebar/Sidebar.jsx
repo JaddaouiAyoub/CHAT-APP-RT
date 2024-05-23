@@ -8,6 +8,7 @@ import AddFriendButton from "./AddFriendButton"
 import { IoIosPersonAdd } from 'react-icons/io';
 import { FaUserFriends } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
+import InvitationBadge from "../friends/InvitationBadge"
 const Sidebar = () => {
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -42,7 +43,9 @@ const Sidebar = () => {
          <div className="mt-auto" style={{ display: 'flex', gap: '300px' }}>
             <LogoutButton />
             <div style={{ display: 'flex', gap: '5px' }}>
-            <FaUserFriends className="w-6 h-6 cursor-pointer " style={ { color: 'white' }} onClick={handleInvitations}/>
+            <div className="w-6 h-6 cursor-pointer " style={ { color: 'white' }} onClick={handleInvitations}>
+            <InvitationBadge onClick={handleInvitations} />
+            </div>
             <IoIosPersonAdd className="w-6 h-6 cursor-pointer  ml-3" style={ { color: 'white' }}   onClick={handleAddFriend}/>
             </div>
     </div>
@@ -52,3 +55,22 @@ const Sidebar = () => {
 }
 
 export default Sidebar
+
+//Starter code 
+
+// import SearchInput from "./SearchInput"
+// import Conversations from "./Conversations"
+// import LogoutButton from "./LogoutButton"
+
+// const Sidebar = () => {
+//   return (
+//     <div className="border-r border-slate-500 p-4 flex flex-col">
+//         <SearchInput />
+//         <div className="divider px-3"></div>
+//          <Conversations />
+//          <LogoutButton /> 
+//     </div>
+//   )
+// }
+
+// export default Sidebar

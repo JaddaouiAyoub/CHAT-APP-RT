@@ -7,10 +7,11 @@ import { useSocketContext } from '../../context/SocketContext';
 import Invitation from '../../components/friends/Invitation';
 import useGetFriendInvitations from '../../hooks/useGetFriendInvitations';
 import toast from 'react-hot-toast';
+import useNotification from '../../hooks/useNotification';
 
 const FriendsInvitations = () => {
-  const {  setInvitations } = useSocketContext();
-  const {loading,invitations,error} = useGetFriendInvitations();
+  const {  invitations,setInvitations } = useSocketContext();
+  // const {loading,invitations,error} = useNotification();
   const [currentPage, setCurrentPage] = useState(1);
   const invitationsPerPage = 6;
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const FriendsInvitations = () => {
   const indexOfFirstInvitation = indexOfLastInvitation - invitationsPerPage;
   const currentInvitations = invitations.slice(indexOfFirstInvitation, indexOfLastInvitation);
 
-  if(error) toast.error(error);
+  // if(error) toast.error(error);
   const handleHome = () => {
     navigate('/');
   };
@@ -39,10 +40,10 @@ const FriendsInvitations = () => {
       }
 
       // Mettre à jour la liste des invitations après acceptation
-      //setInvitations(invitations.filter(inv => inv._id !== invitationId));
+      setInvitations(invitations.filter(inv => inv._id !== invitationId));
       toast.success("invitation acceptée");
        // Mettre à jour la liste des invitations après acceptation
-       window.location.reload();
+      // window.location.reload();
     } catch (error) {
       console.error('Error accepting invitation', error);
     }
@@ -63,10 +64,10 @@ const FriendsInvitations = () => {
       }
 
       // Mettre à jour la liste des invitations après rejet
-      //setInvitations(invitations.filter(inv => inv._id !== invitationId));
+      setInvitations(invitations.filter(inv => inv._id !== invitationId));
       toast.error("invitation refusée");
        // Mettre à jour la liste des invitations après acceptation
-       window.location.reload();
+      // window.location.reload();
     } catch (error) {
       console.error('Error rejecting invitation', error);
     }
@@ -74,7 +75,7 @@ const FriendsInvitations = () => {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  if (loading) return <p>Loading...</p>;
+  // if (loading) return <p>Loading...</p>;
 
   return (
     <>

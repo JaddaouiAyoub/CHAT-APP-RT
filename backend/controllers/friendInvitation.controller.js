@@ -1,8 +1,8 @@
 // controllers/friendInvitation.controller.js
 import FriendInvitation from '../models/friendInvitation.model.js';
 import User from '../models/user.model.js';
-import { io } from '../socket/socket.js'; // Importez l'instance de Socket.io
-
+// import { io } from '../socket/socket.js'; // Importez l'instance de Socket.io
+import { getReceiverSocketId,io } from '../socket/socket.js';
 export const sendFriendInvitation = async (req, res) => {
     try {
         const senderId = req.user._id;
@@ -28,10 +28,17 @@ export const sendFriendInvitation = async (req, res) => {
         });
 
         await invitation.save();
-
+        const sender = await User.findById(senderId);
         // Envoyer l'invitation en temps réel via Socket.io
-        io.to(receiverId.toString()).emit('friendInvitation', invitation);
-        //console.log("Invitation sent successfully");
+        const receiverSocketId = getReceiverSocketId(receiverId);
+        if (receiverSocketId) {
+            //console.log('friend Invitation', invitation);
+            io.to(receiverSocketId).emit('friendInvitation', {
+                invitation,
+                senderName: sender.fullName
+            });
+        }
+        console.log("Invitation sent successfully");
         res.status(200).json({ message: "Invitation sent successfully" });
     } catch (error) {
         console.error("Error in sendFriendInvitation", error.message);
@@ -61,8 +68,17 @@ export const acceptFriendInvitation = async (req, res) => {
         // Supprimer l'invitation après acceptation
         await FriendInvitation.findByIdAndDelete(invitationId);
 
+        // Récupérer le nom du récepteur pour l'envoyer dans la notification
+        const receiver = await User.findById(receiverId);
+
         // Notifier l'expéditeur que l'invitation a été acceptée
-        io.to(invitation.sender.toString()).emit('invitationAccepted', receiverId);
+        const senderSocketId = getReceiverSocketId(invitation.sender.toString());
+        if (senderSocketId) {
+            io.to(senderSocketId).emit('invitationAccepted', {
+                invitationId,
+                receiverName: receiver.fullName
+            });
+        }
 
         res.status(200).json({ message: "Invitation accepted" });
     } catch (error) {
@@ -85,8 +101,17 @@ export const rejectFriendInvitation = async (req, res) => {
         // Supprimer l'invitation après rejet
         await FriendInvitation.findByIdAndDelete(invitationId);
 
+        // Récupérer le nom du récepteur pour l'envoyer dans la notification
+        const receiver = await User.findById(receiverId);
+
         // Notifier l'expéditeur que l'invitation a été rejetée
-        io.to(invitation.sender.toString()).emit('invitationRejected', receiverId);
+        const senderSocketId = getReceiverSocketId(invitation.sender.toString());
+        if (senderSocketId) {
+            io.to(senderSocketId).emit('invitationRejected', {
+                invitationId,
+                receiverName: receiver.fullName
+            });
+        }
 
         res.status(200).json({ message: "Invitation rejected" });
     } catch (error) {

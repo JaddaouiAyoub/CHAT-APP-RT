@@ -5,6 +5,8 @@ import Messages from "./Messages"
 import { TiMessages } from "react-icons/ti";
 import MessageChatGptInput from "./MessageChatGptInput";
 import MessageGpt from "./MessageGpt";
+import { useAuthContext } from "../../context/AuthContext";
+import { useSocketContext } from "../../context/SocketContext";
 import { useSocketContext } from "../../context/SocketContext";
 const MessageContainer = () => {
     const {selectedConversation,setSelectedConversation}=useConversation()

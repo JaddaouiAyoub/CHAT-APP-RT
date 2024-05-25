@@ -66,7 +66,7 @@ export const SocketContextProvider = ({children})=>{
     }, [authUser]);
 
     return (
-        <SocketContext.Provider value={{socket, onlineUsers, invitations, setInvitations}}>
+        <SocketContext.Provider value={{socket, onlineUsers, invitations, setInvitations,authUser}}>
             {children}
         </SocketContext.Provider>
     )

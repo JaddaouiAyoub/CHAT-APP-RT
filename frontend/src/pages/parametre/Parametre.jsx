@@ -1,7 +1,6 @@
 import { IoReturnDownBackOutline } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
 import { FaCheckCircle, FaCamera } from 'react-icons/fa';
-import useProfileUpdate from '../../hooks/useProfileUpdate';
 import toast from 'react-hot-toast';
 import { useAuthContext } from '../../context/AuthContext';
 import { useSocketContext } from '../../context/SocketContext';

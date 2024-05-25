@@ -62,7 +62,7 @@ const Parametre = () => {
         }
   
         const updatedUser = await response.json();
-        setAuthUser(updatedUser);
+        //setAuthUser(updatedUser);
         localStorage.setItem("chat-user", JSON.stringify(updatedUser));
 
         

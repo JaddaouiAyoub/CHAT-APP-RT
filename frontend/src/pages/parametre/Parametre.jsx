@@ -30,7 +30,7 @@ const Parametre = () => {
           console.log('file is loaded HHHH');
           cloudinaryUrl = await uploadToCloud(file);
           if (!cloudinaryUrl) {
-            throw new Error("Error: Probleme de stockage de l'image");
+            throw new Error("Probleme de stockage de l'image");
           }
           console.log('cloudinary url', cloudinaryUrl);
           setProfilePic(cloudinaryUrl);
@@ -62,11 +62,11 @@ const Parametre = () => {
         }
   
         const updatedUser = await response.json();
-        setAuthUser(updatedUser);
+        //setAuthUser(updatedUser);
         localStorage.setItem("chat-user", JSON.stringify(updatedUser));
 
         
-         toast.success('Profile updated successfully!');
+                toast.success('Profile updated successfully!');
       } catch (error) {
         toast.error(`Error updating profile: ${error.message}`);
       }

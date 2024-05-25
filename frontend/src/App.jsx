@@ -8,6 +8,7 @@ import { Toaster } from 'react-hot-toast';
 import { useAuthContext } from './context/AuthContext';
 import Friends from './pages/friends/Friends';
 import FriendsInvitations from './pages/friends/FriendsInvitations';
+import Parametre from './pages/parametre/Parametre';
 function App() {
 
  const {authUser} = useAuthContext()
@@ -19,6 +20,7 @@ function App() {
         <Route path='/signup' element={authUser ? <Navigate to="/" /> : <SignUp />} />
         <Route path='/users' element={authUser? <Friends /> : <Home />} />
         <Route path='invitations' element={authUser? <FriendsInvitations /> : <Home />} />
+        <Route path='/parametre' element={authUser? <Parametre /> : <Home />} />
       </Routes>
       <Toaster />
     </div>

@@ -1,5 +1,5 @@
 import User from "../models/user.model.js";
-
+import { io } from '../socket/socket.js';
 export const getUserForSidebar = async (req, res) => {
   try {
       const loggedInUserId = req.user._id;
@@ -57,3 +57,53 @@ export const getUserByUsername = async (req, res) => {
         res.status(500).json({ error: "Internal server error" });
     }
 };
+export const updateUserProfile = async (req, res) => {
+    try {
+      const userId = req.user._id;
+      const { username, profilePic, currentPassword, newPassword, confirmPassword, fullName } = req.body;
+  
+      const user = await User.findById(userId);
+  
+      if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+  
+      if (username && username !== user.username) {
+        const existingUser = await User.findOne({ username });
+        if (existingUser) {
+          return res.status(400).json({ error: 'Username already exists' });
+        }
+        user.username = username;
+      }
+  
+      if (profilePic) {
+        user.profilePic = profilePic;
+      }
+  
+      if (fullName) {
+        user.fullName = fullName;
+      }
+  
+      if (currentPassword && newPassword && confirmPassword) {
+        const isMatch = await bcrypt.compare(currentPassword, user.password);
+        if (!isMatch) {
+          return res.status(400).json({ error: 'Current password is incorrect' });
+        }
+        if (newPassword !== confirmPassword) {
+          return res.status(400).json({ error: 'New passwords do not match' });
+        }
+        user.password = await bcrypt.hash(newPassword, 10);
+      }
+  
+      const updatedUser = await user.save();
+  
+      // Assurez-vous que io est correctement configuré et accessible ici
+      //io.emit('profileUpdated', { updatedProfile: updatedUser });
+  
+      res.status(200).json(updatedUser);
+    } catch (error) {
+      console.error('Error updating profile', error.message);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  };
+  

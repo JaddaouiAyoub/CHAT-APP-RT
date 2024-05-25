@@ -9,6 +9,7 @@ import { IoIosPersonAdd } from 'react-icons/io';
 import { FaUserFriends } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import InvitationBadge from "../friends/InvitationBadge"
+import { FaCog } from 'react-icons/fa';
 const Sidebar = () => {
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -23,6 +24,9 @@ const Sidebar = () => {
   };
   const handleInvitations = () => {
     navigate('/invitations');
+  };
+  const handleParametre = () => {
+    navigate('/parametre');
   };
 
   useEffect(() => {
@@ -41,7 +45,12 @@ const Sidebar = () => {
         <ChatGptConversation />
          <Conversations conversations={searchTerm ? filteredConversations : allConversations} loading={loading}/>
          <div className="mt-auto" style={{ display: 'flex', gap: '300px' }}>
+         <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
             <LogoutButton />
+            <button onClick={handleParametre} className=" rounded-full hover:bg-gray-700">
+              <FaCog className="w-6 h-6 text-white mt-0" />
+            </button>
+          </div>
             <div style={{ display: 'flex', gap: '5px' }}>
             <div className="w-6 h-6 cursor-pointer " style={ { color: 'white' }} onClick={handleInvitations}>
             <InvitationBadge onClick={handleInvitations} />
@@ -56,21 +65,3 @@ const Sidebar = () => {
 
 export default Sidebar
 
-//Starter code 
-
-// import SearchInput from "./SearchInput"
-// import Conversations from "./Conversations"
-// import LogoutButton from "./LogoutButton"
-
-// const Sidebar = () => {
-//   return (
-//     <div className="border-r border-slate-500 p-4 flex flex-col">
-//         <SearchInput />
-//         <div className="divider px-3"></div>
-//          <Conversations />
-//          <LogoutButton /> 
-//     </div>
-//   )
-// }
-
-// export default Sidebar

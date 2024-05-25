@@ -16,7 +16,7 @@ export const SocketContextProvider = ({children})=>{
     const [onlineUsers, setOnlineUsers] = useState([]);
     const { invitations: initialInvitations } = useGetFriendInvitations(); 
     const [invitations, setInvitations] = useState([]);
-    const { authUser } = useAuthContext();
+    const { authUser,setAuthUser } = useAuthContext();
 
     useEffect(() => {
         if (initialInvitations) {
@@ -66,7 +66,7 @@ export const SocketContextProvider = ({children})=>{
     }, [authUser]);
 
     return (
-        <SocketContext.Provider value={{socket, onlineUsers, invitations, setInvitations,authUser}}>
+        <SocketContext.Provider value={{socket, onlineUsers, invitations, setInvitations,authUser,setAuthUser}}>
             {children}
         </SocketContext.Provider>
     )

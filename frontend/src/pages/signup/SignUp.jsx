@@ -24,68 +24,66 @@ const handleSubmit =async (e)=> {
     // console.log(inputs);
 };
 
-  return  <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
-    <div className="w-full p-6 rounded-1g shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
-        <h1 className="text-3xl font-semibold text-center text-gray-300">
-            Sign Up
-            <span className="text-blue-500"> ChatApp</span>
-         </h1>
+return (
+    <div className='flex flex-col items-center justify-center min-w-custom mx-auto'>
+        <div className='w-full p-8 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0 '>
+            <h1 className='text-3x1 font-semibold text-center text-gray-300 ' style={{ fontSize: '1.5rem' }}>
+                Sign Up <span className='text-blue-800'>ChatApp</span>
+            </h1>
 
-         <form onSubmit={handleSubmit}>
-            <label className="label p-2">
-                <span className="text-base label-text text-gray-100">Full name</span> 
-            </label> 
-            <input type="text" placeholder="EX: Ayoub Jad" className="w-full input input-bordered h-10" 
-                value={inputs.fullName}
-                onChange={(e)=>setInputs({...inputs,fullName:e.target.value})}
-            />
-            <div>
-                <label className="label p-2">
-                    <span className="text-base label-text text-gray-100">Username</span> 
-                </label> 
-                <input type="text" placeholder="Ayoubjad" className="w-full input input-bordered h-10 " 
-                    value={inputs.username}
-                    onChange={(e)=>setInputs({...inputs,username:e.target.value})}
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label className='label p-2'>
+                        <span className='text-base label-text'>Full Name</span>
+                    </label>
+                    <input type="text" placeholder="Test Test" className='w-full input input-bordered h-10 bg-gray-200' 
+                        value={inputs.fullName}
+                        onChange={(e) => setInputs({ ...inputs, fullName: e.target.value})}
+                    />
+                </div>
 
-                />
-            </div>
-            <div>
-                <label className="label p-2">
-                    <span className="text-base label-text text-gray-100">Password</span> 
-                </label> 
-                <input type="password" placeholder="Enter Password" className="w-full input input-bordered h-10" 
-                    value={inputs.password}
-                    onChange={(e)=>setInputs({...inputs,password:e.target.value})}
+                <div>
+                    <label className='label'>
+                        <span className='text-base label-text'>Username</span>
+                    </label>
+                    <input type="text" placeholder="test2002" className="w-full input input-bordered h-10 bg-gray-200"
+                        value={inputs.username}
+                        onChange={(e) => setInputs({ ...inputs, username:e.target.value})}
+                     />
+                </div>
 
-                />
-            </div>
-            <div>
-                <label className="label p-2">
-                    <span className="text-base label-text text-gray-100">Confirm Password</span> 
-                </label> 
-                <input type="password" placeholder="Confirm Password " className="w-full input input-bordered h-10 "
-                    value={inputs.confirmPassword}
-                    onChange={(e)=>setInputs({...inputs,confirmPassword:e.target.value})}
+                <div>
+                    <label className='label'>
+                        <span className='text-base label-text'>Password</span>
+                    </label>
+                    <input type="password" placeholder="Enter password" className="w-full input input-bordered h-10 bg-gray-200"
+                        value={inputs.password} 
+                        onChange={(e) => setInputs({...inputs, password: e.target.value})}
+                        />
+                </div>
 
-                />
-            </div>
-            
-            {/* Gender chekbox to be done here */}
-            <GenderChekBox onCheckboxChange={handleCheckboxChange } selectedGender={inputs.gender} />
-            <Link to={"/login"} className="text-sm hover:inderline hover:text-blue-600 mt-1 inline-block text-gray-100" >
-                Already have an account?
-            </Link>
-            <div>
-                    <button className="btn btn-block btn-sm mt-2 text-gray-100" 
-                    disabled={loading}
-                    >
+                <div>
+                    <label className='label'>
+                        <span className='text-base label-text'>Confirm password</span>
+                    </label>
+                    <input type="password" placeholder="Confirm password" className="w-full input input-bordered h-10 bg-gray-200"
+                        value={inputs.confirmPassword} 
+                        onChange={(e) => setInputs({...inputs, confirmPassword: e.target.value})}
+                       />
+                </div>
+
+                <GenderCheckBox onCheckboxChange = {handleCheckboxChange} selectedGender={inputs.gender} />
+
+                <Link to='/login' className="text-sm hover:underline hover:text-blue-600 mt-2 inline-block">Already have an account?</Link>
+                <div>
+                    <button className='btn btn-block btn-sm mt-2 bg-gray-300' disabled={loading}>
                         {loading ? <span className='loading loading-spinner'></span> : "Sign Up"}
                     </button>
-            </div>
-
-         </form>
+                </div>
+            </form>
+        </div>
     </div>
-  </div>;
+);
   
 }
 

@@ -28,14 +28,14 @@ const handleSubmit =async (e)=> {
     <div className="w-full p-6 rounded-1g shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
         <h1 className="text-3xl font-semibold text-center text-gray-300">
             Sign Up
-            <span className="text-blue-500"> ChatApp</span>
+            <span className="text-blue-500"> ChatWave</span>
          </h1>
 
          <form onSubmit={handleSubmit}>
             <label className="label p-2">
                 <span className="text-base label-text text-gray-100">Full name</span> 
             </label> 
-            <input type="text" placeholder="EX: Ayoub Jad" className="w-full input input-bordered h-10" 
+            <input type="text" placeholder="Full name" className="w-full input input-bordered h-10" 
                 value={inputs.fullName}
                 onChange={(e)=>setInputs({...inputs,fullName:e.target.value})}
             />
@@ -43,7 +43,7 @@ const handleSubmit =async (e)=> {
                 <label className="label p-2">
                     <span className="text-base label-text text-gray-100">Username</span> 
                 </label> 
-                <input type="text" placeholder="Ayoubjad" className="w-full input input-bordered h-10 " 
+                <input type="text" placeholder="username" className="w-full input input-bordered h-10 " 
                     value={inputs.username}
                     onChange={(e)=>setInputs({...inputs,username:e.target.value})}
 
@@ -76,7 +76,7 @@ const handleSubmit =async (e)=> {
                 Already have an account?
             </Link>
             <div>
-                    <button className="btn btn-block btn-sm mt-2 text-gray-100" 
+                    <button className="btn btn-block btn-sm mt-2 text-gray-500" 
                     disabled={loading}
                     >
                         {loading ? <span className='loading loading-spinner'></span> : "Sign Up"}

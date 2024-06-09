@@ -17,7 +17,7 @@ const Login = () => {
             <div className='flex flex-col items-center justify-center min-w-custom mx-auto'>
             
                 <div className='w-full p-8 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
-                    <h1 className='text-3x1 font-bold text-center text-gray-300 ' style={{ fontSize: '1.5rem' }}>Login <span className='text-blue-800'> ChatApp</span>
+                    <h1 className='text-3x1 font-bold text-center text-gray-200 ' style={{ fontSize: '1.5rem' }}>Login <span className='text-blue-800'> ChatWave</span>
                     </h1>
                     <form onSubmit= {handleSubmit}>
                         <div>
@@ -39,7 +39,7 @@ const Login = () => {
 
                         <Link to='/signup' className="text-sm hover:underline hover:text-blue-600 mt-2 inline-block">Don't have an account?</Link>
                         <div>
-                            <button className='btn btn-block btn-sm mt-2 bg-gray-300' disabled={loading}>
+                            <button className='btn btn-block btn-sm mt-2 bg-gray-800' disabled={loading}>
                                 {loading ? <span className='loading loading-spinner'></span> : "Login"}
                             </button>
                         </div>

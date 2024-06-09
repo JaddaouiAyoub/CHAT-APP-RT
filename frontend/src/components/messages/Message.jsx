@@ -65,7 +65,7 @@ const Message = ({ message }) => {
                                 <li><button className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left" onClick={() => handleChangeLanguage('it')}>Italy</button></li>
                                 <li><button className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left" onClick={() => handleChangeLanguage('de')}>Allemand</button></li>
                                 <li><button className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left" onClick={() => handleChangeLanguage('zh')}>Chinois</button></li>
-                                {/* Ajoutez d'autres langues si nécessaire */}
+                                {/* Ajoutez d'autres langues si nécessaire. */}
                             </ul>
                         </div>
                     )}
